@@ -9,6 +9,10 @@ const twitterClient = new TwitterApi({
   accessSecret: process.env.AC_TOKEN_SC
 });
 
+let { data }  = await axios.get("https://watasalim.vercel.app/api/quotes/random");
+let tweet = await twitterClient.v1.tweet(data.quote.body)
+await twitterClient.v1.reply(data.quote.url, tweet.id_str)
+
 setInterval(async() => {
   let { data }  = await axios.get("https://watasalim.vercel.app/api/quotes/random");
   let tweet = await twitterClient.v1.tweet(data.quote.body)
