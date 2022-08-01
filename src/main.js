@@ -16,6 +16,3 @@ async function getQuotesAndTweet() {
 }
 
 await getQuotesAndTweet();
-setInterval(async() => {
-  await getQuotesAndTweet();
-}, 3600000);
